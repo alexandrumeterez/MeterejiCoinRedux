@@ -1,12 +1,14 @@
 import Blockchain
 from flask import Flask, jsonify, request
 from uuid import uuid4
+import sqlite3
+import hashlib
 
 # Instantiate node
 app = Flask(__name__)
 
 # Generate unique address for node
-node_identifier = str(uuid4()).replace('-', '')
+# node_identifier = str(uuid4()).replace('-', '')
 
 blockchain = Blockchain.Blockchain()
 
@@ -28,6 +30,13 @@ def mine():
         recipient=node_identifier,
         amount=1,
     )
+
+    # Add to database
+    conn = sqlite3.connect("/home/alex/PycharmProjects/MeterejiCoin/Databases/Addresses")
+    c = conn.cursor()
+    c.execute("UPDATE tbl1 SET amount=amount+? WHERE private_key=?;", (1, node_identifier))
+    conn.commit()
+    conn.close()
 
     # Forge the new Block by adding it to the chain
     previous_hash = blockchain.hash(last_block)
@@ -54,11 +63,37 @@ def new_transaction():
     if not all(k in values for k in required):
         return "Missing values", 400
 
-    # Create new transaction
-    index = blockchain.new_transaction(values['sender'], values['recipient'], values['amount'])
+    sender_hash = hashlib.sha256(values['sender'].encode('utf-8')).hexdigest()
+    recipient_hash = hashlib.sha256(values['recipient'].encode('utf-8')).hexdigest()
+    conn = sqlite3.connect("/home/alex/PycharmProjects/MeterejiCoin/Databases/Addresses")
+    c = conn.cursor()
+    print(sender_hash)
+    found = c.execute("""SELECT EXISTS(SELECT 1 FROM tbl1 WHERE private_key=?);""", (sender_hash,)).fetchall()
+    if found[0][0] is False:
+        conn.commit()
+        conn.close()
+        return "Sender not found!", 400
+    found = c.execute("""SELECT EXISTS(SELECT 1 FROM tbl1 WHERE private_key=?);""", (recipient_hash,)).fetchall()
+    if found[0][0] is False:
+        conn.commit()
+        conn.close()
+        return "Recipient not found!", 400
 
-    response = {'message': f'Transaction will be added to block {index}'}
-    return jsonify(response), 201
+    # Get cash from sender's wallet
+    print(sender_hash)
+    sender_amount = c.execute("""SELECT amount FROM tbl1 WHERE private_key=?;""", (sender_hash,)).fetchone()[0]
+    if sender_amount > int(values['amount']):
+        c.execute("UPDATE tbl1 SET amount=amount+? WHERE private_key=?;", (int(values['amount']), recipient_hash))
+        c.execute("UPDATE tbl1 SET amount=amount-? WHERE private_key=?;", (int(values['amount']), sender_hash))
+        conn.commit()
+        conn.close()
+        # Create new transaction
+        index = blockchain.new_transaction(values['sender'], values['recipient'], values['amount'])
+
+        response = {'message': f'Transaction will be added to block {index}'}
+        return jsonify(response), 201
+    response = {'message': 'Bad transaction'}
+    return jsonify(response), 400
 
 
 @app.route('/chain', methods=['GET'])
@@ -73,14 +108,37 @@ def full_chain():
 @app.route('/nodes/register', methods=['POST'])
 def register_nodes():
     values = request.get_json()
+    #
     if values is None:
         return "Bad request", 400
-    nodes = values.get('nodes')
-    if nodes is None:
-        return "Invalid nodes list", 400
 
-    for node in nodes:
-        blockchain.register_node(node)
+    private_key = values.get('private_key')
+    if private_key is None:
+        return "Invalid private key", 400
+
+    key = hashlib.sha256(str(private_key).encode('utf-8')).hexdigest()
+    conn = sqlite3.connect("/home/alex/PycharmProjects/MeterejiCoin/Databases/Addresses")
+    c = conn.cursor()
+    found = c.execute("""SELECT EXISTS(SELECT 1 FROM tbl1 WHERE private_key=?);""", (key,)).fetchall()
+    print(found)
+    if found[0][0] == 1:
+        conn.commit()
+        conn.close()
+        response = {
+            'message': 'Node already exists!',
+        }
+        return jsonify(response), 400
+
+    print(private_key)
+    public_key = hashlib.sha256(str(private_key).encode('utf-8')).hexdigest()
+    blockchain.register_node(public_key)
+
+    # Add to database
+    conn = sqlite3.connect("/home/alex/PycharmProjects/MeterejiCoin/Databases/Addresses")
+    c = conn.cursor()
+    c.execute("""INSERT INTO tbl1 VALUES (?,?);""", (public_key, 0))
+    conn.commit()
+    conn.close()
 
     response = {
         'message': 'New node has been added',
@@ -111,6 +169,41 @@ def get_nodes():
     response = {
         'message': "Current nodes:",
         'nodes': list(blockchain.nodes)
+    }
+    return jsonify(response), 200
+
+
+@app.route('/login', methods=['POST'])
+def login_user():
+    global node_identifier
+    values = request.get_json()
+    if values is None:
+        return "Bad request", 400
+    key = values['private_key']
+    public_key = hashlib.sha256(str(key).encode('utf-8')).hexdigest()
+    # Add to database
+    conn = sqlite3.connect("/home/alex/PycharmProjects/MeterejiCoin/Databases/Addresses")
+    c = conn.cursor()
+    found = c.execute("""SELECT EXISTS(SELECT 1 FROM tbl1 WHERE private_key=?);""", (public_key,)).fetchall()
+    if found[0][0]:
+        node_identifier = public_key
+        conn.commit()
+        conn.close()
+        return "Success", 200
+    else:
+        conn.commit()
+        conn.close()
+        return "User not found!", 400
+
+
+@app.route('/amount', methods=['GET'])
+def get_amount():
+    conn = sqlite3.connect("/home/alex/PycharmProjects/MeterejiCoin/Databases/Addresses")
+    c = conn.cursor()
+    amount = c.execute("""SELECT amount FROM tbl1 WHERE private_key=?""", (node_identifier,)).fetchone()[0]
+    response = {
+        'node' : node_identifier,
+        'amount': amount
     }
     return jsonify(response), 200
 

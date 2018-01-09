@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="405681f5-6060-460f-8fca-19e9a8c4cc9b" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/venv/Blockchain.py" afterPath="$PROJECT_DIR$/venv/Blockchain.py" />
       <change beforePath="$PROJECT_DIR$/venv/GUIClient/GUI.py" afterPath="$PROJECT_DIR$/venv/GUIClient/GUI.py" />
+      <change beforePath="$PROJECT_DIR$/venv/WebAPI.py" afterPath="$PROJECT_DIR$/venv/WebAPI.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,8 +19,8 @@
       <file leaf-file-name="Blockchain.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/venv/Blockchain.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="568">
-              <caret line="71" column="29" lean-forward="false" selection-start-line="71" selection-start-column="29" selection-end-line="71" selection-end-column="29" />
+            <state relative-caret-position="302">
+              <caret line="66" column="34" lean-forward="false" selection-start-line="66" selection-start-column="34" selection-end-line="66" selection-end-column="34" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -29,8 +31,8 @@
       <file leaf-file-name="WebAPI.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/venv/WebAPI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="874">
-              <caret line="55" column="0" lean-forward="true" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
+            <state relative-caret-position="1316">
+              <caret line="204" column="33" lean-forward="false" selection-start-line="204" selection-start-column="33" selection-end-line="204" selection-end-column="33" />
               <folding>
                 <element signature="e#0#17#0" expanded="true" />
               </folding>
@@ -41,46 +43,11 @@
       <file leaf-file-name="GUI.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/venv/GUIClient/GUI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="150" column="25" lean-forward="false" selection-start-line="150" selection-start-column="25" selection-end-line="150" selection-end-column="25" />
+            <state relative-caret-position="1462">
+              <caret line="86" column="0" lean-forward="true" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
-                <element signature="e#150#761#0" expanded="false" />
-                <element signature="e#790#1431#0" expanded="false" />
-                <element signature="e#1463#2167#0" expanded="false" />
-                <element signature="e#2192#2430#0" expanded="false" />
-                <element signature="e#2465#2838#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Transaction.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/venv/Transaction.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pip-selfcheck.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/venv/pip-selfcheck.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Block.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/venv/Block.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -116,10 +83,11 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1919" />
-    <option name="width" value="1922" />
-    <option name="height" value="1083" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="1416" />
+    <option name="y" value="204" />
+    <option name="width" value="1914" />
+    <option name="height" value="1084" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -145,6 +113,11 @@
             <path>
               <item name="MeterejiCoin" type="b2602c69:ProjectViewProjectNode" />
               <item name="MeterejiCoin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MeterejiCoin" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MeterejiCoin" type="462c0819:PsiDirectoryNode" />
+              <item name="Databases" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MeterejiCoin" type="b2602c69:ProjectViewProjectNode" />
@@ -177,7 +150,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.GUI">
+  <component name="RunManager" selected="Python.WebAPI">
     <configuration name="Block" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -258,8 +231,8 @@
     </list>
     <recent_temporary>
       <list size="4">
-        <item index="0" class="java.lang.String" itemvalue="Python.GUI" />
-        <item index="1" class="java.lang.String" itemvalue="Python.WebAPI" />
+        <item index="0" class="java.lang.String" itemvalue="Python.WebAPI" />
+        <item index="1" class="java.lang.String" itemvalue="Python.GUI" />
         <item index="2" class="java.lang.String" itemvalue="Python.Block" />
         <item index="3" class="java.lang.String" itemvalue="Python.Blockchain" />
       </list>
@@ -282,14 +255,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1919" y="0" width="1922" height="1083" extended-state="6" />
+    <frame x="1416" y="204" width="1914" height="1084" extended-state="0" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16458334" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16527197" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28323108" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2829418" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -382,11 +355,6 @@
           <caret line="56" column="39" lean-forward="true" selection-start-line="56" selection-start-column="39" selection-end-line="56" selection-end-column="39" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
-            <element signature="e#150#761#0" expanded="false" />
-            <element signature="e#790#1431#0" expanded="false" />
-            <element signature="e#1463#2167#0" expanded="false" />
-            <element signature="e#2192#2430#0" expanded="false" />
-            <element signature="e#2465#2838#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -441,11 +409,6 @@
           <caret line="59" column="105" lean-forward="false" selection-start-line="59" selection-start-column="105" selection-end-line="59" selection-end-column="105" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
-            <element signature="e#150#761#0" expanded="false" />
-            <element signature="e#790#1431#0" expanded="false" />
-            <element signature="e#1463#2167#0" expanded="false" />
-            <element signature="e#2192#2430#0" expanded="false" />
-            <element signature="e#2465#2838#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -500,11 +463,6 @@
           <caret line="22" column="29" lean-forward="true" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
-            <element signature="e#150#761#0" expanded="false" />
-            <element signature="e#790#1431#0" expanded="false" />
-            <element signature="e#1463#2167#0" expanded="false" />
-            <element signature="e#2192#2430#0" expanded="false" />
-            <element signature="e#2465#2838#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -563,10 +521,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/venv/Block.py">
+    <entry file="file://$PROJECT_DIR$/venv/GUIClient/__init__.py" />
+    <entry file="file://$PROJECT_DIR$/venv/Transaction.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+        <state relative-caret-position="85">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -579,46 +538,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/venv/GUIClient/__init__.py" />
-    <entry file="file://$PROJECT_DIR$/venv/Transaction.py">
+    <entry file="file://$PROJECT_DIR$/venv/Block.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+        <state relative-caret-position="119">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/venv/Blockchain.py">
+    <entry file="file://$PROJECT_DIR$/Databases/Addresses">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="568">
-          <caret line="71" column="29" lean-forward="false" selection-start-line="71" selection-start-column="29" selection-end-line="71" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/venv/WebAPI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="874">
-          <caret line="55" column="0" lean-forward="true" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
+        <state relative-caret-position="1316">
+          <caret line="204" column="33" lean-forward="false" selection-start-line="204" selection-start-column="33" selection-end-line="204" selection-end-column="33" />
           <folding>
             <element signature="e#0#17#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/venv/Blockchain.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="66" column="34" lean-forward="false" selection-start-line="66" selection-start-column="34" selection-end-line="66" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/venv/GUIClient/GUI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="150" column="25" lean-forward="false" selection-start-line="150" selection-start-column="25" selection-end-line="150" selection-end-column="25" />
+        <state relative-caret-position="1462">
+          <caret line="86" column="0" lean-forward="true" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
-            <element signature="e#150#761#0" expanded="false" />
-            <element signature="e#790#1431#0" expanded="false" />
-            <element signature="e#1463#2167#0" expanded="false" />
-            <element signature="e#2192#2430#0" expanded="false" />
-            <element signature="e#2465#2838#0" expanded="false" />
           </folding>
         </state>
       </provider>

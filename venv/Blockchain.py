@@ -5,6 +5,7 @@ import Block
 import Transaction
 from urllib.parse import urlparse
 import requests
+import hashlib
 
 
 class Blockchain(object):
@@ -62,9 +63,8 @@ class Blockchain(object):
     def valid_proof(block):
         return Blockchain.hash(block)[:Blockchain.difficulty] == "00"
 
-    def register_node(self, address):
-        parsed_url = urlparse(address)
-        self.nodes.add(parsed_url.netloc)
+    def register_node(self, private_key):
+        self.nodes.add(private_key)
 
     @staticmethod
     def valid_chain(chain):

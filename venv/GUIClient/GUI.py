@@ -9,20 +9,23 @@ import json
 def connect_to_server():
     global address
     global port
+    global key
     sock = socket.socket()
-    # address = e1.get()
-    # port = e2.get()
+    address = e1.get()
+    port = e2.get()
+    key = e3.get()
 
-    address = "127.0.0.1"
-    port = "5000"
-
-    if address is "" or port is "":
-        messagebox.showerror("Error", "Please input correct address and port")
+    if address is "" or port is "" or key is "":
+        messagebox.showerror("Error", "Please input correct address and port and key")
         return
     try:
         sock.connect((address, int(port)))
         messagebox.showinfo("Connected", "Successfully connected")
         sock.close()
+        private_key_json = {
+            'private_key': int(key)
+        }
+        requests.post("http://" + address + ":" + str(port) + "/login", json=private_key_json)
         spawn_choice_window()
         connectWindow.withdraw()
     except socket.error as e:
@@ -35,7 +38,7 @@ def get_blockchain():
     global parsedResponse
     # response = requests.get("http://" + address + ":" + port + "/chain").content
     chainDetailsTree.delete(*chainDetailsTree.get_children())
-    response = requests.get("http://" + "127.0.0.1" + ":" + str(5000) + "/chain").content
+    response = requests.get("http://" + address + ":" + str(port) + "/chain").content
     parsedResponse = json.loads(response)
     # parsedBlockchain = json.dumps(parsedResponse, indent=4, sort_keys=True)
 
@@ -62,7 +65,7 @@ def show_transactions():
 
 
 def mine_block():
-    response = requests.get("http://" + "127.0.0.1" + ":" + str(5000) + "/mine")
+    response = requests.get("http://" + address + ":" + str(port) + "/mine")
     if response.status_code == 200:
         messagebox.showinfo("Success", "Mining successful")
     else:
@@ -78,8 +81,25 @@ def send_new_transaction():
         'recipient': recipient,
         'amount': amount
     }
-    r = requests.post("http://" + "127.0.0.1" + ":" + str(5000) + "/transactions/new", json=new_transaction)
+    r = requests.post("http://" + address + ":" + str(port) + "/transactions/new", json=new_transaction)
     messagebox.showinfo("Response", r.json()['message'])
+
+
+def register_new_node():
+    private_key = registerNodeEntry.get()
+    if private_key is None:
+        messagebox.showerror("Error", "Please input key")
+    new_node = {
+        'private_key': int(private_key)
+    }
+    r = requests.post("http://" + address + ":" + str(port) + "/nodes/register", json=new_node)
+    messagebox.showinfo("Response", r.json()['message'])
+
+
+def show_current_amount():
+    response = requests.get("http://" + address + ":" + str(port) + "/amount").json()
+    messagebox.showinfo("Node and amount",
+                        "Node: {var1} \n Amount: {var2}".format(var1=response['node'], var2=response['amount']))
 
 
 # Connect window
@@ -87,14 +107,16 @@ connectWindow = Tk()
 connectWindow.title("Client")
 Label(connectWindow, text="Address: ").grid(row=0)
 Label(connectWindow, text="Port: ").grid(row=1)
-
+Label(connectWindow, text="Key: ").grid(row=2)
 e1 = Entry(connectWindow)
 e1.grid(row=0, column=1)
 e2 = Entry(connectWindow)
 e2.grid(row=1, column=1)
+e3 = Entry(connectWindow)
+e3.grid(row=2, column=1)
 
 connectButton = Button(connectWindow, text="Connect", command=connect_to_server)
-connectButton.grid(row=2, columnspan=2)
+connectButton.grid(row=3, columnspan=2)
 
 
 # End of connect window
@@ -110,6 +132,7 @@ def spawn_choice_window():
     global senderEntry
     global recipientEntry
     global amountEntry
+    global registerNodeEntry
 
     choiceWindow = Toplevel(connectWindow)
     choiceWindow.protocol("WM_DELETE_WINDOW", lambda: connectWindow.destroy())
@@ -156,9 +179,22 @@ def spawn_choice_window():
     amountEntry.pack(fill='both', expand=1)
     sendTransactionButton = ttk.Button(newTransactionWindow, text="Send transaction",
                                        command=send_new_transaction).pack(fill='both', expand=1)
+    showCurrentAmountButton = ttk.Button(newTransactionWindow, text="Get amount",
+                                         command=show_current_amount).pack(fill='both', expand=1)
+
+    # Register new node window
+    registerNodeWindow = Frame(choiceWindow)
+    registerNodeWindow.pack(fill='both', expand=1)
+    Label(registerNodeWindow, text="Private key: ").pack(fill='both', expand=1)
+    registerNodeEntry = Entry(registerNodeWindow)
+    registerNodeEntry.pack(fill='both', expand=1)
+    registerNodeButton = ttk.Button(registerNodeWindow, text="Register node", command=register_new_node).pack(
+        fill='both', expand=1)
+
     # Add tabs to the notebook
     notebookWidget.add(fullChainWindow, text="Blockchain")
     notebookWidget.add(newTransactionWindow, text="New transaction")
+    notebookWidget.add(registerNodeWindow, text="Register node")
 
 
 if __name__ == "__main__":
